@@ -15,6 +15,8 @@ I then discovered that packaging is simply a placeholder, not a directory struct
 - Author is full name and not separated first and last name
 - "library user" and "find books by my favourite author" may imply I need to model a user with favourites, but as it's
   not explicitly asked for, I've omitted it.
+- I discovered that the ISBN format does not include letters. I will continue to represent it as a simple string without
+  validation/formatting.
 
 ## Instructions
 

@@ -4,6 +4,7 @@ interface BookRepoInterface {
 
     fun findByAuthor(author: String): List<Book>
     fun findByTitle(title: String): List<Book>
+    fun findByISBN(isbn: String): Book?
 }
 
 data class BookRepo(val books: List<Book> = emptyList()) : BookRepoInterface {
@@ -14,5 +15,9 @@ data class BookRepo(val books: List<Book> = emptyList()) : BookRepoInterface {
 
     override fun findByTitle(title: String): List<Book> {
         return books.filter { it.title.lowercase() == title.lowercase() }
+    }
+
+    override fun findByISBN(isbn: String): Book? {
+        return books.find { it.isbn == isbn }
     }
 }

@@ -5,14 +5,28 @@ import org.junit.jupiter.api.Assertions.assertEquals
 
 class BookRepoTest {
 
-    val book1 = Book("Bobby Uncle", "Awesome Book", "1234")
+    val book1 = Book("Bobby Uncle", "Awesome Book", "1234-222")
     val book2 = Book("Uncle Bob", "Book 1", "1234-123")
-    val book3 = Book("Uncle Bob", "Book 2", "1234-123")
-    val book4 = Book("me", "Book 1", "5672")
+    val book3 = Book("Uncle Bob", "Book 2", "1234-345")
+    val book4 = Book("me", "Book 1", "1234-678")
 
     val books = listOf(
         book1, book2, book3, book4
     )
+
+    @Test
+    fun `findByISBN should find a single match`() {
+        val repo = BookRepo(books)
+        val result = repo.findByISBN("1234-222")
+        assertEquals(book1, result)
+    }
+
+    @Test
+    fun `findByISBN returns null when no match is found`() {
+        val repo = BookRepo(books)
+        val result = repo.findByISBN("dude")
+        assertEquals(null, result)
+    }
 
     @Test
     fun `findByTitle should match all results`() {
