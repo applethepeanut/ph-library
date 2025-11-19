@@ -8,15 +8,20 @@ project structure without `src` and `test`. Hacking achieved the standard projec
 
 I then discovered that packaging is simply a placeholder, not a directory structure.
 
+### Assumptions/decisions
+
+- Starting with finding books by author, I've assumed it should be case insensitive.
+
 ## Instructions
 
-- Please create a GitHub repository containing code for a book lending library. Use the stories below for requirements.
-- This is just a text-based exercise - no GUI code is required.
-- We also don’t expect a DB or persistence layer - storing data in memory is fine. Just prove it works by calling the
-  relevant functions from other code.
-- Please don’t spend any more than 2 to 3 hours on this. We don’t expect a complete solution, but something that we can
-  use as the basis for a follow-on conversation.
-- When you are ready, please send us a link to your repository.
+- [x] Please create a GitHub repository containing code for a book lending library. Use the stories below for
+  requirements.
+- [x] This is just a text-based exercise - no GUI code is required.
+- [x] We also don’t expect a DB or persistence layer - storing data in memory is fine. Just prove it works by calling
+  the relevant functions from other code.
+- [ ] Please don’t spend any more than 2 to 3 hours on this. We don’t expect a complete solution, but something that we
+  can use as the basis for a follow-on conversation.
+- [ ] When you are ready, please send us a link to your repository.
 
 ### Context
 
@@ -25,11 +30,13 @@ some software to help me do that.
 
 ### Stories
 
-- As a library user, I would like to be able to find books by my favourite author, so that I know if they are available
-  in the library.
-- As a library user, I would like to be able to find books by title, so that I know if they are available in the
+- [ ] As a library user, I would like to be able to find books by my favourite author, so that I know if they are
+  available in the library.
+- [ ] As a library user, I would like to be able to find books by title, so that I know if they are available in the
   library.
-- As a library user, I would like to be able to find books by ISBN, so that I know if they are available in the library.
-- As a library user, I would like to be able to borrow a book, so I can read it at home.
-- As the library owner, I would like to know how many books are being borrowed, so I can see how many are outstanding.
-- As a library user, I should be to prevented from borrowing reference books, so that they are always available.
+- [ ] As a library user, I would like to be able to find books by ISBN, so that I know if they are available in the
+  library.
+- [ ] As a library user, I would like to be able to borrow a book, so I can read it at home.
+- [ ] As the library owner, I would like to know how many books are being borrowed, so I can see how many are
+  outstanding.
+- [ ] As a library user, I should be to prevented from borrowing reference books, so that they are always available.
