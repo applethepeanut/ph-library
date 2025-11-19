@@ -2,7 +2,9 @@
 
 ## Implementation
 
-My initial setup attempts failed, so I followed [create-a-project](https://kotlinlang.org/docs/jvm-get-started.html#create-a-project)
+My initial setup attempts failed, so I
+followed [create-a-project](https://kotlinlang.org/docs/jvm-get-started.html#create-a-project), which produced a flat
+project structure without `src` and `test`. Hacking achieved the standard project structure that I would have expected.
 
 ## Instructions
 
