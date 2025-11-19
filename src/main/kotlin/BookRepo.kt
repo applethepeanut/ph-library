@@ -5,9 +5,7 @@ interface BookRepoInterface {
     fun findByAuthor(author: String): List<Book>
 }
 
-object BookRepo : BookRepoInterface {
-
-    private val books = mutableListOf<Book>()
+data class BookRepo(val books: List<Book> = emptyList()) : BookRepoInterface {
 
     override fun findByAuthor(author: String): List<Book> {
         return books.filter { it.author == author }
