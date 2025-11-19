@@ -6,6 +6,8 @@ My initial setup attempts failed, so I
 followed [create-a-project](https://kotlinlang.org/docs/jvm-get-started.html#create-a-project), which produced a flat
 project structure without `src` and `test`. Hacking achieved the standard project structure that I would have expected.
 
+I then discovered that packaging is simply a placeholder, not a directory structure.
+
 ## Instructions
 
 - Please create a GitHub repository containing code for a book lending library. Use the stories below for requirements.
