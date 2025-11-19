@@ -12,6 +12,7 @@ I then discovered that packaging is simply a placeholder, not a directory struct
 
 - Starting with finding books by author, I've assumed it should be case insensitive.
 - I decided on `data class BookRepo` so I can have a more functional interface - initially I had tried an object.
+- Author is full name and not separated first and last name
 
 ## Instructions
 
