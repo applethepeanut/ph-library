@@ -8,6 +8,6 @@ interface BookRepoInterface {
 data class BookRepo(val books: List<Book> = emptyList()) : BookRepoInterface {
 
     override fun findByAuthor(author: String): List<Book> {
-        return books.filter { it.author == author }
+        return books.filter { it.author.lowercase() == author.lowercase() }
     }
 }
