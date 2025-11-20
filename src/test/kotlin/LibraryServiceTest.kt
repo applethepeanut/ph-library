@@ -29,6 +29,21 @@ class LibraryServiceTest {
     }
 
     @Test
+    fun `findBooksByTitle should return books by title`() {
+        val fixture = fixture()
+        val result = fixture.libraryService.findBooksByTitle("Title 3")
+        assertEquals(1, result.size)
+        assertEquals(book3, result.first())
+    }
+
+    @Test
+    fun `findBooksByTitle should return no results when no books are found`() {
+        val fixture = fixture()
+        val result = fixture.libraryService.findBooksByTitle("some title")
+        assertEquals(0, result.size)
+    }
+
+    @Test
     fun `findBooksByAuthor should return books by my favourite author`() {
         val fixture = fixture()
         val result = fixture.libraryService.findBooksByAuthor("Author 3")

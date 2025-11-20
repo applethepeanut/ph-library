@@ -20,6 +20,7 @@ I then discovered that packaging is simply a placeholder, not a directory struct
 - After some thought, I altered the title and author search to use contain rather than an exact match.
 - Moving on to the library operations, I considered separating the books from their status, this would allow book
   duplicates etc, but that's out of scope, so I'm keeping status as part of the book model.
+- I'm assuming that "if they are available in the library" means they're visible in searches, but not for borrowing.
 
 ## Instructions
 
@@ -41,7 +42,7 @@ some software to help me do that.
 
 - [x] As a library user, I would like to be able to find books by my favourite author, so that I know if they are
   available in the library.
-- [ ] As a library user, I would like to be able to find books by title, so that I know if they are available in the
+- [x] As a library user, I would like to be able to find books by title, so that I know if they are available in the
   library.
 - [ ] As a library user, I would like to be able to find books by ISBN, so that I know if they are available in the
   library.
