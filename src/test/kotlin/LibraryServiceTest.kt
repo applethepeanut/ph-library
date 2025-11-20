@@ -29,6 +29,23 @@ class LibraryServiceTest {
     }
 
     @Test
+    fun `getBookByISBN should return books by title`() {
+        val fixture = fixture()
+        val result = fixture.libraryService.getBookByISBN("3002")
+        assertEquals(book2, result)
+    }
+
+    @Test
+    fun `getBookByISBN should return null`() {
+        val fixture = fixture()
+        val result = fixture.libraryService.getBookByISBN("some ISBN")
+        assertEquals(null, result)
+    }
+
+
+
+
+    @Test
     fun `findBooksByTitle should return books by title`() {
         val fixture = fixture()
         val result = fixture.libraryService.findBooksByTitle("Title 3")

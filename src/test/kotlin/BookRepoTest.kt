@@ -33,16 +33,16 @@ class BookRepoTest {
     }
 
     @Test
-    fun `findByISBN should find a single match`() {
+    fun `getByISBN should find a single match`() {
         val repo = BookRepo(books)
-        val result = repo.findByISBN("1234-222")
+        val result = repo.getByISBN("1234-222")
         assertEquals(book1, result)
     }
 
     @Test
-    fun `findByISBN returns null when no match is found`() {
+    fun `getByISBN returns null when no match is found`() {
         val repo = BookRepo(books)
-        val result = repo.findByISBN("dude")
+        val result = repo.getByISBN("dude")
         assertEquals(null, result)
     }
 

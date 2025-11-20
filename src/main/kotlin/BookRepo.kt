@@ -6,7 +6,7 @@ interface BookRepoInterface {
     fun add(book: Book): Result<String>
     fun findByAuthor(author: String): List<Book>
     fun findByTitle(title: String): List<Book>
-    fun findByISBN(isbn: String): Book?
+    fun getByISBN(isbn: String): Book?
 }
 
 data class BookRepo(val books: MutableList<Book> = mutableListOf()) : BookRepoInterface {
@@ -20,15 +20,18 @@ data class BookRepo(val books: MutableList<Book> = mutableListOf()) : BookRepoIn
         }
     }
 
+    private fun findBy(propertySelector: (Book) -> String, term: String): List<Book> =
+        books.filter { (propertySelector(it)).lowercase().contains(term.lowercase()) }
+
     override fun findByAuthor(author: String): List<Book> {
-        return books.filter { it.author.lowercase().contains(author.lowercase()) }
+        return findBy({ it.author }, author)
     }
 
     override fun findByTitle(title: String): List<Book> {
-        return books.filter { it.title.lowercase().contains(title.lowercase()) }
+        return findBy({ it.title }, title)
     }
 
-    override fun findByISBN(isbn: String): Book? {
+    override fun getByISBN(isbn: String): Book? {
         return books.find { it.isbn == isbn }
     }
 }
