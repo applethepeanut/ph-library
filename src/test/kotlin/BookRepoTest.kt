@@ -5,10 +5,13 @@ import org.junit.jupiter.api.Assertions.assertEquals
 
 class BookRepoTest {
 
-    val book1 = Book("Bobby Uncle", "Awesome Book", "1234-222")
-    val book2 = Book("Uncle Bob", "Book 1", "1234-123")
-    val book3 = Book("Uncle Bob", "Book 2", "1234-345")
-    val book4 = Book("me", "Book 1", "1234-678")
+    private fun randomStatus(): BookStatus =
+        BookStatus.entries.random()
+
+    val book1 = Book("Bobby Uncle", "Awesome Book", "1234-222", randomStatus())
+    val book2 = Book("Uncle Bob", "Book 1", "1234-123", randomStatus())
+    val book3 = Book("Uncle Bob", "Book 2", "1234-345", randomStatus())
+    val book4 = Book("me", "Book 1", "1234-678", randomStatus())
 
     val books = mutableListOf(
         book1, book2, book3, book4
@@ -24,7 +27,7 @@ class BookRepoTest {
     @Test
     fun `add can successfully add a book`() {
         val repo = BookRepo(books)
-        val book = Book("me", "Book 2", "1234-999")
+        val book = Book("me", "Book 2", "1234-999", randomStatus())
         val result = repo.add(book)
         assertEquals(Success, result)
     }

@@ -39,7 +39,7 @@ some software to help me do that.
 
 ### Stories
 
-- [ ] As a library user, I would like to be able to find books by my favourite author, so that I know if they are
+- [x] As a library user, I would like to be able to find books by my favourite author, so that I know if they are
   available in the library.
 - [ ] As a library user, I would like to be able to find books by title, so that I know if they are available in the
   library.
