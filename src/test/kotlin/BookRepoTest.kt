@@ -29,6 +29,13 @@ class BookRepoTest {
     }
 
     @Test
+    fun `findByTitle should match titles containing the search term`() {
+        val repo = BookRepo(books)
+        val result = repo.findByTitle("BooK")
+        assertEquals(setOf(book1, book2, book3, book4), result.toSet())
+    }
+
+    @Test
     fun `findByTitle should match all results`() {
         val repo = BookRepo(books)
         val result = repo.findByTitle("Book 1")
@@ -47,6 +54,13 @@ class BookRepoTest {
         val repo = BookRepo(books)
         val result = repo.findByTitle("dude")
         assertEquals(0, result.size)
+    }
+
+    @Test
+    fun `findByAuthor should match authors containing the search term`() {
+        val repo = BookRepo(books)
+        val result = repo.findByAuthor("BOB")
+        assertEquals(setOf(book1, book2, book3), result.toSet())
     }
 
     @Test
