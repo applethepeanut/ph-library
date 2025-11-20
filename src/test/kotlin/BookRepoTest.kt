@@ -10,9 +10,24 @@ class BookRepoTest {
     val book3 = Book("Uncle Bob", "Book 2", "1234-345")
     val book4 = Book("me", "Book 1", "1234-678")
 
-    val books = listOf(
+    val books = mutableListOf(
         book1, book2, book3, book4
     )
+
+    @Test
+    fun `add fails to add a book with the same ISBN`() {
+        val repo = BookRepo(books)
+        val result = repo.add(book1)
+        assertEquals(Failure("The book already exists. ISBN:${book1.isbn}"), result)
+    }
+
+    @Test
+    fun `add can successfully add a book`() {
+        val repo = BookRepo(books)
+        val book = Book("me", "Book 2", "1234-999")
+        val result = repo.add(book)
+        assertEquals(Success, result)
+    }
 
     @Test
     fun `findByISBN should find a single match`() {

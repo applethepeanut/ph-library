@@ -18,6 +18,8 @@ I then discovered that packaging is simply a placeholder, not a directory struct
 - I discovered that the ISBN format does not include letters. I will continue to represent it as a simple string without
   validation/formatting.
 - After some thought, I altered the title and author search to use contain rather than an exact match.
+- Moving on to the library operations, I considered separating the books from their status, this would allow book
+  duplicates etc, but that's out of scope, so I'm keeping status as part of the book model.
 
 ## Instructions
 
