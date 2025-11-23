@@ -21,8 +21,9 @@ I then discovered that packaging is simply a placeholder, not a directory struct
 - Moving on to the library operations, I considered separating the books from their status, this would allow book
   duplicates etc, but that's out of scope, so I'm keeping status as part of the book model.
 - I'm assuming that "if they are available in the library" means they're visible in searches, but not for borrowing.
-- Initially I had designed find books by ISBN to be a single book. I thin this is an error, but for time's sake, I'm
+- Initially I had designed find books by ISBN to be a single book. I think this may have been in error, but for time's sake, I'm
   leaving the implementation as it is for now so I can get to more interesting things.
+- To aid in borrowing and general repo ops, I added an id.
 
 ## Instructions
 
@@ -46,7 +47,7 @@ some software to help me do that.
   available in the library.
 - [x] As a library user, I would like to be able to find books by title, so that I know if they are available in the
   library.
-- [ ] As a library user, I would like to be able to find books by ISBN, so that I know if they are available in the
+- [x] As a library user, I would like to be able to find books by ISBN, so that I know if they are available in the
   library. In correctly implemented in that it's currently by exact match.
 - [ ] As a library user, I would like to be able to borrow a book, so I can read it at home.
 - [ ] As the library owner, I would like to know how many books are being borrowed, so I can see how many are

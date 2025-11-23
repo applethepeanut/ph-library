@@ -2,32 +2,33 @@ package com.atpfury.phlibrary.kotlin
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import java.util.*
 
 class BookRepoTest {
 
     private fun randomStatus(): BookStatus =
         BookStatus.entries.random()
 
-    val book1 = Book("Bobby Uncle", "Awesome Book", "1234-222", randomStatus())
-    val book2 = Book("Uncle Bob", "Book 1", "1234-123", randomStatus())
-    val book3 = Book("Uncle Bob", "Book 2", "1234-345", randomStatus())
-    val book4 = Book("me", "Book 1", "1234-678", randomStatus())
+    val book1 = Book(UUID.randomUUID(), "Bobby Uncle", "Awesome Book", "1234-222", randomStatus())
+    val book2 = Book(UUID.randomUUID(), "Uncle Bob", "Book 1", "1234-123", randomStatus())
+    val book3 = Book(UUID.randomUUID(), "Uncle Bob", "Book 2", "1234-345", randomStatus())
+    val book4 = Book(UUID.randomUUID(), "me", "Book 1", "1234-678", randomStatus())
 
     val books = mutableListOf(
         book1, book2, book3, book4
     )
 
     @Test
-    fun `add fails to add a book with the same ISBN`() {
+    fun `add fails to add a book with the same id`() {
         val repo = BookRepo(books)
         val result = repo.add(book1)
-        assertEquals(Failure("The book already exists. ISBN:${book1.isbn}"), result)
+        assertEquals(Failure("The book ${book1.id} already exists."), result)
     }
 
     @Test
     fun `add can successfully add a book`() {
         val repo = BookRepo(books)
-        val book = Book("me", "Book 2", "1234-999", randomStatus())
+        val book = Book(UUID.randomUUID(), "me", "Book 2", "1234-999", randomStatus())
         val result = repo.add(book)
         assertEquals(Success, result)
     }

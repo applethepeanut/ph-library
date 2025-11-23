@@ -2,27 +2,28 @@ package com.atpfury.phlibrary.kotlin
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import java.util.*
 
 class LibraryServiceTest {
 
-    val book1 = Book("Author 3", "Title 1", "3001", BookStatus.BORROWED)
-    val book2 = Book("Author 3", "Title 2", "3002", BookStatus.AVAILABLE)
-    val book3 = Book("Author 3", "Title 3", "3003", BookStatus.BORROWED)
+    val book1 = Book(UUID.randomUUID(), "Author 3", "Title 1", "3001", BookStatus.BORROWED)
+    val book2 = Book(UUID.randomUUID(), "Author 3", "Title 2", "3002", BookStatus.AVAILABLE)
+    val book3 = Book(UUID.randomUUID(), "Author 3", "Title 3", "3003", BookStatus.BORROWED)
 
     interface Fixture {
         val libraryService: LibraryService
     }
 
     private fun fixture(): Fixture = object : Fixture {
-        override val libraryService = LibraryService
+        override val libraryService = LibraryService()
 
         init {
             libraryService.addBooks(
-                Book("Author 1", "title 1", "1001", BookStatus.AVAILABLE),
-                Book("Author 1", "Title 2", "1002", BookStatus.AVAILABLE),
-                Book("Author 2", "Title 1", "2001", BookStatus.AVAILABLE),
-                Book("Author 4", "Title 1", "4001", BookStatus.AVAILABLE),
-                Book("Author 5", "Title 1", "5001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(),"Author 1", "title 1", "1001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(),"Author 1", "Title 2", "1002", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(),"Author 2", "Title 1", "2001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(),"Author 4", "Title 1", "4001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(),"Author 5", "Title 1", "5001", BookStatus.AVAILABLE),
                 book1, book2, book3
             )
         }
@@ -32,6 +33,12 @@ class LibraryServiceTest {
     fun `getBookByISBN should return books by title`() {
         val fixture = fixture()
         val result = fixture.libraryService.getBookByISBN("3002")
+
+        println("expected: $book2")
+        println("actual:   $result")
+        println("equal?   ${book2 == result}")
+
+
         assertEquals(book2, result)
     }
 
@@ -41,9 +48,6 @@ class LibraryServiceTest {
         val result = fixture.libraryService.getBookByISBN("some ISBN")
         assertEquals(null, result)
     }
-
-
-
 
     @Test
     fun `findBooksByTitle should return books by title`() {

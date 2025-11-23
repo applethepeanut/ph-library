@@ -8,9 +8,7 @@ interface LibraryServiceInterface {
     fun addBooks(vararg books: Book): Result<List<String>>
 }
 
-object LibraryService : LibraryServiceInterface {
-
-    private val bookRepo: BookRepoInterface = BookRepo()
+class LibraryService(private val bookRepo: BookRepo = BookRepo()) : LibraryServiceInterface {
 
     override fun addBooks(vararg books: Book): Result<List<String>> {
         val ops = books.map { bookRepo.add(it) }
