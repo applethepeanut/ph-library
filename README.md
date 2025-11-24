@@ -21,9 +21,12 @@ I then discovered that packaging is simply a placeholder, not a directory struct
 - Moving on to the library operations, I considered separating the books from their status, this would allow book
   duplicates etc, but that's out of scope, so I'm keeping status as part of the book model.
 - I'm assuming that "if they are available in the library" means they're visible in searches, but not for borrowing.
-- Initially I had designed find books by ISBN to be a single book. I think this may have been in error, but for time's sake, I'm
+- Initially I had designed find books by ISBN to be a single book. I think this may have been in error, but for time's
+  sake, I'm
   leaving the implementation as it is for now so I can get to more interesting things.
 - To aid in borrowing and general repo ops, I added an id.
+- Since I'm new to Kotlin, I used ChatGPT in abstract terms to use the standard library and to determine methods how to
+  achieve certain patterns/ways of doing things. However, I have not used it to generate any code.
 
 ## Instructions
 
