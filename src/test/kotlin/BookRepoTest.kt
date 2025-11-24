@@ -30,7 +30,7 @@ class BookRepoTest {
         val repo = BookRepo(books)
         val book = Book(UUID.randomUUID(), "me", "Book 2", "1234-999", randomStatus())
         val result = repo.add(book)
-        assertEquals(Success, result)
+        assertEquals(Success(Unit), result)
     }
 
     @Test

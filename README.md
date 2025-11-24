@@ -32,9 +32,9 @@ I then discovered that packaging is simply a placeholder, not a directory struct
 - [x] This is just a text-based exercise - no GUI code is required.
 - [x] We also don’t expect a DB or persistence layer - storing data in memory is fine. Just prove it works by calling
   the relevant functions from other code.
-- [ ] Please don’t spend any more than 2 to 3 hours on this. We don’t expect a complete solution, but something that we
+- [x] Please don’t spend any more than 2 to 3 hours on this. We don’t expect a complete solution, but something that we
   can use as the basis for a follow-on conversation.
-- [ ] When you are ready, please send us a link to your repository.
+- [x] When you are ready, please send us a link to your repository.
 
 ### Context
 

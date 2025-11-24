@@ -3,7 +3,7 @@ package com.atpfury.phlibrary.kotlin
 
 interface BookRepoInterface {
 
-    fun add(book: Book): Result<String>
+    fun add(book: Book): Result<String, Unit>
     fun findByAuthor(author: String): List<Book>
     fun findByTitle(title: String): List<Book>
     fun getByISBN(isbn: String): Book?
@@ -11,12 +11,12 @@ interface BookRepoInterface {
 
 data class BookRepo(val books: MutableList<Book> = mutableListOf()) : BookRepoInterface {
 
-    override fun add(book: Book): Result<String> {
+    override fun add(book: Book): Result<String, Unit> {
         if (books.any { it.id == book.id }) {
             return Failure("The book ${book.id} already exists.")
         } else {
             books.add(book)
-            return Success
+            return Success(Unit)
         }
     }
 

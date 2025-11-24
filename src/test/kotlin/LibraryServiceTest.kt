@@ -2,6 +2,7 @@ package com.atpfury.phlibrary.kotlin
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.fail
 import java.util.*
 
 class LibraryServiceTest {
@@ -30,15 +31,33 @@ class LibraryServiceTest {
     }
 
     @Test
+    fun `borrowBook should succeed if a book is available`() {
+        val fixture = fixture()
+        when (fixture.libraryService.borrowBook(book2)) {
+            is Success -> assertEquals(BookStatus.BORROWED, fixture.libraryService.borrowBook(book2).value.status)
+            is Failure -> fail("Expected Success but got Failure: ${fixture.libraryService.borrowBook(book2).value}")
+        }
+    }
+
+    @Test
+    fun `borrowBook should fail if a book is already borrowed`() {
+        val fixture = fixture()
+        val result = fixture.libraryService.borrowBook(book3)
+        assertEquals(Failure("Book ${book3.id} is not available."), result)
+    }
+
+    @Test
+    fun `borrowBook should fail if a book cannot be found`() {
+        val fixture = fixture()
+        val randomBook = Book(UUID.randomUUID(), "", "", "", BookStatus.AVAILABLE)
+        val result = fixture.libraryService.borrowBook(randomBook)
+        assertEquals(Failure("Book ${randomBook.id} not found."), result)
+    }
+
+    @Test
     fun `getBookByISBN should return books by title`() {
         val fixture = fixture()
         val result = fixture.libraryService.getBookByISBN("3002")
-
-        println("expected: $book2")
-        println("actual:   $result")
-        println("equal?   ${book2 == result}")
-
-
         assertEquals(book2, result)
     }
 

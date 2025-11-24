@@ -1,5 +1,6 @@
 package com.atpfury.phlibrary.kotlin
 
-sealed interface Result<out T>
-data object Success : Result<Nothing>
-data class Failure<out T>(val reason: T) : Result<T>
+sealed interface Result<out L, out R>
+
+data class Failure<out L>(val value: L) : Result<L, Nothing>
+data class Success<out R>(val value: R) : Result<Nothing, R>
