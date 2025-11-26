@@ -30,10 +30,11 @@ class LibraryServiceTest {
     }
 
     @Test
-    fun `borrowBook should succeed if a book is available`() {
+    fun `borrowBook should succeed if a book is available and update the book state`() {
         val fixture = fixture()
         val result = fixture.libraryService.borrowBook(book2)
         assertTrue(result is Success<*>)
+        assertEquals(book2.status, BookStatus.BORROWED)
     }
 
     @Test
