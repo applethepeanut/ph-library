@@ -19,6 +19,20 @@ class BookRepoTest {
     )
 
     @Test
+    fun `returns a book when one is found`() {
+        val repo = BookRepo(books)
+        val result = repo.get(book1.id)
+        assertEquals(Success(book1), result)
+    }
+
+    @Test
+    fun `get fails to find book that does not exist`() {
+        val repo = BookRepo(mutableListOf())
+        val result = repo.get(book1.id)
+        assertEquals(Failure("No book found with id: ${book1.id}"), result)
+    }
+
+    @Test
     fun `add fails to add a book with the same id`() {
         val repo = BookRepo(books)
         val result = repo.add(book1)

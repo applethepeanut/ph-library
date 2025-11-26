@@ -1,5 +1,7 @@
 package com.atpfury.phlibrary.kotlin
 
+import java.util.*
+
 
 interface BookRepoInterface {
 
@@ -7,6 +9,7 @@ interface BookRepoInterface {
     fun findByAuthor(author: String): List<Book>
     fun findByTitle(title: String): List<Book>
     fun getByISBN(isbn: String): Book?
+    fun get(id: UUID): Result<String, Book>
 }
 
 data class BookRepo(val books: MutableList<Book> = mutableListOf()) : BookRepoInterface {
@@ -33,5 +36,11 @@ data class BookRepo(val books: MutableList<Book> = mutableListOf()) : BookRepoIn
 
     override fun getByISBN(isbn: String): Book? {
         return books.find { it.isbn == isbn }
+    }
+
+    override fun get(id: UUID): Result<String, Book> {
+        val book = books.find { it.id == id }
+        return if (book != null) Success(book)
+        else Failure("No book found with id: $id")
     }
 }
