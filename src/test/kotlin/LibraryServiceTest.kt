@@ -1,8 +1,7 @@
 package com.atpfury.phlibrary.kotlin
 
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.fail
 import java.util.*
 
 class LibraryServiceTest {
@@ -20,25 +19,22 @@ class LibraryServiceTest {
 
         init {
             libraryService.addBooks(
-                Book(UUID.randomUUID(),"Author 1", "title 1", "1001", BookStatus.AVAILABLE),
-                Book(UUID.randomUUID(),"Author 1", "Title 2", "1002", BookStatus.AVAILABLE),
-                Book(UUID.randomUUID(),"Author 2", "Title 1", "2001", BookStatus.AVAILABLE),
-                Book(UUID.randomUUID(),"Author 4", "Title 1", "4001", BookStatus.AVAILABLE),
-                Book(UUID.randomUUID(),"Author 5", "Title 1", "5001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(), "Author 1", "title 1", "1001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(), "Author 1", "Title 2", "1002", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(), "Author 2", "Title 1", "2001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(), "Author 4", "Title 1", "4001", BookStatus.AVAILABLE),
+                Book(UUID.randomUUID(), "Author 5", "Title 1", "5001", BookStatus.AVAILABLE),
                 book1, book2, book3
             )
         }
     }
 
-//    WIP
-//    @Test
-//    fun `borrowBook should succeed if a book is available`() {
-//        val fixture = fixture()
-//        when (fixture.libraryService.borrowBook(book2)) {
-//            is Success -> assertEquals(BookStatus.BORROWED, fixture.libraryService.getBookById(book2.id).value)
-//            is Failure -> fail("Expected Success but got Failure: ${fixture.libraryService.borrowBook(book2).value}")
-//        }
-//    }
+    @Test
+    fun `borrowBook should succeed if a book is available`() {
+        val fixture = fixture()
+        val result = fixture.libraryService.borrowBook(book2)
+        assertTrue(result is Success<*>)
+    }
 
     @Test
     fun `borrowBook should fail if a book is already borrowed`() {
@@ -52,7 +48,7 @@ class LibraryServiceTest {
         val fixture = fixture()
         val randomBook = Book(UUID.randomUUID(), "", "", "", BookStatus.AVAILABLE)
         val result = fixture.libraryService.borrowBook(randomBook)
-        assertEquals(Failure("Book ${randomBook.id} not found."), result)
+        assertEquals(Failure("No book found with id: ${randomBook.id}"), result)
     }
 
     @Test
