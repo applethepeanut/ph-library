@@ -19,15 +19,8 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Ignore Gradle project-specific cache directory
+.gradle
 
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
+# Ignore Gradle build output directory
+build

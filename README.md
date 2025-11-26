@@ -1,12 +1,27 @@
 # Patchwork Health Technical Test
 
+## Setup
+
+- requires [gradle](https://docs.gradle.org/)
+- java
+
+### Testing
+
+Run the test with `gradle test` or `gradle test --rerun-tasks`
+
+### Running
+
+Run the app with `gradle run` to run through the completed work.
+
 ## Implementation
 
 My initial setup attempts failed, so I
 followed [create-a-project](https://kotlinlang.org/docs/jvm-get-started.html#create-a-project), which produced a flat
 project structure without `src` and `test`. Hacking achieved the standard project structure that I would have expected.
-
 I then discovered that packaging is simply a placeholder, not a directory structure.
+I then discovered that this was also in error and that gradle files are required, so I then
+followed [sample_building_kotlin_applications.html](https://docs.gradle.org/current/samples/sample_building_kotlin_applications.html)
+with a different repo, got it to work and then restructured this repo accordingly.
 
 ### Assumptions/decisions
 
@@ -53,7 +68,8 @@ some software to help me do that.
   library.
 - [x] As a library user, I would like to be able to find books by ISBN, so that I know if they are available in the
   library. In correctly implemented in that it's currently by exact match.
-- [ ] As a library user, I would like to be able to borrow a book, so I can read it at home.
+- [ ] As a library user, I would like to be able to borrow a book, so I can read it at home. - this work is incomplete
+  as the status still needs to be updated correctly
 - [ ] As the library owner, I would like to know how many books are being borrowed, so I can see how many are
   outstanding.
 - [ ] As a library user, I should be to prevented from borrowing reference books, so that they are always available.

@@ -1,7 +1,4 @@
-package com.atpfury.phlibrary.kotlin
-
-import java.util.UUID
-
+package com.atpfury.phlibrary
 
 interface LibraryServiceInterface {
     fun findBooksByAuthor(author: String): List<Book>

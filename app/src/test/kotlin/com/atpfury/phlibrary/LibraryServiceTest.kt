@@ -1,4 +1,4 @@
-package com.atpfury.phlibrary.kotlin
+package com.atpfury.phlibrary
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

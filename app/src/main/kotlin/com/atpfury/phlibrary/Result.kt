@@ -1,4 +1,4 @@
-package com.atpfury.phlibrary.kotlin
+package com.atpfury.phlibrary
 
 sealed interface Result<out L, out R>
 

@@ -1,4 +1,4 @@
-package com.atpfury.phlibrary.kotlin
+package com.atpfury.phlibrary
 
 import java.util.*
 
