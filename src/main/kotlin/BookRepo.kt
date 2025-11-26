@@ -15,11 +15,12 @@ interface BookRepoInterface {
 data class BookRepo(val books: MutableList<Book> = mutableListOf()) : BookRepoInterface {
 
     override fun add(book: Book): Result<String, Unit> {
-        if (books.any { it.id == book.id }) {
-            return Failure("The book ${book.id} already exists.")
-        } else {
-            books.add(book)
-            return Success(Unit)
+        return when (get(book.id)) {
+            is Success -> Failure("The book ${book.id} already exists.")
+            is Failure -> {
+                books.add(book)
+                Success(Unit)
+            }
         }
     }
 
