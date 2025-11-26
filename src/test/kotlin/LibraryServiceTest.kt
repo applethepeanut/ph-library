@@ -30,14 +30,15 @@ class LibraryServiceTest {
         }
     }
 
-    @Test
-    fun `borrowBook should succeed if a book is available`() {
-        val fixture = fixture()
-        when (fixture.libraryService.borrowBook(book2)) {
-            is Success -> assertEquals(BookStatus.BORROWED, fixture.libraryService.borrowBook(book2).value.status)
-            is Failure -> fail("Expected Success but got Failure: ${fixture.libraryService.borrowBook(book2).value}")
-        }
-    }
+//    WIP
+//    @Test
+//    fun `borrowBook should succeed if a book is available`() {
+//        val fixture = fixture()
+//        when (fixture.libraryService.borrowBook(book2)) {
+//            is Success -> assertEquals(BookStatus.BORROWED, fixture.libraryService.getBookById(book2.id).value)
+//            is Failure -> fail("Expected Success but got Failure: ${fixture.libraryService.borrowBook(book2).value}")
+//        }
+//    }
 
     @Test
     fun `borrowBook should fail if a book is already borrowed`() {

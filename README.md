@@ -25,6 +25,7 @@ I then discovered that packaging is simply a placeholder, not a directory struct
   sake, I'm
   leaving the implementation as it is for now so I can get to more interesting things.
 - To aid in borrowing and general repo ops, I added an id.
+- I got as far as starting with borrow books, but the implementation is incomplete.
 - Since I'm new to Kotlin, I used ChatGPT in abstract terms to use the standard library and to determine methods how to
   achieve certain patterns/ways of doing things. However, I have not used it to generate any code.
 
